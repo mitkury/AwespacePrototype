@@ -13,6 +13,9 @@ namespace Awespace {
 
 		public float EndTime {
 			get {
+				if (timelines == null || timelines.Count == 0)
+					return 0f;
+
 				return timelines.OrderBy(t => t.EndTime).ToList().Last().EndTime;
 			}
 		}

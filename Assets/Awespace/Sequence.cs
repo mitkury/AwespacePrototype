@@ -118,6 +118,9 @@ namespace Awespace {
 				containers = GetComponentsInChildren<TimelineContainer>().ToList();
 
 				foreach (var container in containers) {
+					if (container.timelines == null || container.timelines.Count == 0)
+						continue;
+
 					foreach (var timeline in container.timelines) {
 						timeline.sequence = this;
 					}
