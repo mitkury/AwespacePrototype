@@ -20,7 +20,10 @@ namespace Awespace {
 			}
 		}
 
-		public void Install(Sequence sequence) {
+		public void Install(GameObject target, Sequence sequence) {
+			this.target = target;
+			timelines = GetComponentsInChildren<Timeline>().ToList();
+
 			foreach (var timeline in timelines) {
 				timeline.Install(sequence, target);
 			}

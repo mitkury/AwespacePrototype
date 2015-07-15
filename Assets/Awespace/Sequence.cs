@@ -72,9 +72,11 @@ namespace Awespace {
 		}
 
 		public void Initialize() {
+			/*
 			foreach (var container in containers) {
 				container.Install(this);
 			}
+			*/
 		}
 
 		public void Play() {

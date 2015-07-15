@@ -22,9 +22,16 @@ namespace Awespace {
 
 		public TimelineContainer CreateTimelineContainer(GameObject target) {
 			var container = HComponent.Create<TimelineContainer>(target.name+" (Timelines)");
-			container.target = target;
 
 			container.transform.parent = sequence.transform;
+
+			if (target.GetComponent<AudioSource>() != null) {
+				var audioTimeline = HComponent.Create<TimelineAudio>("Audio");
+
+				audioTimeline.transform.parent = container.transform;
+			}
+
+			container.Install(target, sequence);
 
 			return container;
 		}

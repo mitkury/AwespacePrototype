@@ -30,6 +30,12 @@ namespace Awespace {
 			}
 		}
 
+		public override void Install (Sequence sequence, GameObject target)
+		{
+			base.Install (sequence, target);
+			audioSource = target.GetComponent<AudioSource>();
+		}
+
 		public override void Play (float localRunningTime) {
 			base.Play(localRunningTime);
 

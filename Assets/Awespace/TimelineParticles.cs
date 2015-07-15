@@ -34,6 +34,7 @@ namespace Awespace {
 		public override void Install (Sequence sequence, GameObject target)
 		{
 			base.Install (sequence, target);
+			particleSystem = target.GetComponent<ParticleSystem>();
 			particleSystem.randomSeed = seed;
 		}
 
