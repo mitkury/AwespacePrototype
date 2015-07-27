@@ -14,6 +14,11 @@ public class MouseCameraControl : MonoBehaviour {
 	}
 
 	void Update () {
+		#if UNITY_EDITOR
+		if (Input.GetKey(KeyCode.LeftAlt))
+			return;
+		#endif
+
 		mouseLook.LookRotation(transform, targetCamera.transform);
 	}
 	

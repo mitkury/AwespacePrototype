@@ -51,8 +51,11 @@ namespace Awespace {
 		public override void Pause ()
 		{
 			base.Pause ();
-			
 			particleSystem.Pause();
+
+			if (RunningTime >= EndTime) {
+				particleSystem.Clear();
+			}
 		}
 
 		void Update() {

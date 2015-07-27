@@ -50,9 +50,17 @@ public class Visitor : MonoBehaviour {
 
 	//#if UNITY_STANDALONE
 	void Update() {
+		#if UNITY_ANDROID
 		if (Input.GetMouseButtonDown(0) && sight.target != null) {
 			sight.target.SendMessage("OnClick", sight.hitInfo.point, SendMessageOptions.DontRequireReceiver);
 		}
+		#endif
+
+		#if UNITY_EDITOR
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			Debug.Break();
+		}
+		#endif
 	}
 	//#endif
 
@@ -67,7 +75,7 @@ public class Visitor : MonoBehaviour {
 
 	public static bool isInVRMode {
 		get {
-			#if UNITY_EDITOR || UNITY_STANDALONE
+			#if UNITY_EDITOR
 			return false;
 			#endif
 			

@@ -100,6 +100,14 @@ namespace Awespace {
 			runningTimeToStopAt = _runningTime + seconds;
 		}
 
+		public void PlayForOneFrameAt(float normalizedTime) {
+			foreach (var container in containers) {
+				foreach (var timeline in container.timelines) {
+					timeline.PlayForOneFrameAt(normalizedTime);
+				}
+			}
+		}
+
 		public TimelineStatus GetTimelineStatusRelatedToRunningTime(Timeline timeline) {
 			if (_runningTime < timeline.startTime)
 				return TimelineStatus.Future;

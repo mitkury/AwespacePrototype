@@ -23,6 +23,8 @@ namespace Awespace {
 			if (!sequenceWasComplete && !sequence.IsPlaying) {
 				sequence.Play();
 				sequence.PauseAfterSec(0.0001f);
+
+				//sequence.PlayForOneFrameAt(progress);
 			}
 		}
 

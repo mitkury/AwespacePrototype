@@ -44,7 +44,9 @@ namespace Awespace {
 
 			audioSource.time = localRunningTime < Duration ? localRunningTime : 0;
 
-			audioSource.Play();
+			if (RunningTime >= 0 && RunningTime <= EndTime) {
+				audioSource.Play();
+			}
 		}
 
 		public override void Pause ()
@@ -52,6 +54,14 @@ namespace Awespace {
 			base.Pause ();
 
 			audioSource.Pause();
+		}
+
+		protected override IEnumerator PlayForOneFrameAtCo (float normalizedTime)
+		{
+			// Mute the soundSource in order to not get an unpleasent noize when scrubbing through a paused timeline.
+			audioSource.mute = true;
+			yield return base.PlayForOneFrameAtCo (normalizedTime);
+			audioSource.mute = false;
 		}
 
 		void Update() {
