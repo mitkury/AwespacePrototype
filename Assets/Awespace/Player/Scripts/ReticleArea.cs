@@ -41,10 +41,9 @@ public class ReticleArea : MonoBehaviour {
 
 		#if UNITY_STANDALONE
 
-			#if UNITY_EDITOR
-			if (!Input.GetKey(KeyCode.LeftAlt))
-				return;
-			#endif
+        // If VR isn't enabled and Alt key isn't pressed--don't move the cursor by the mouse.
+        if (!UnityEngine.VR.VRSettings.enabled && !Input.GetKey(KeyCode.LeftAlt))
+            return;		
 
 		if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
 			TimeSinceMovedReticle = Time.timeSinceLevelLoad;

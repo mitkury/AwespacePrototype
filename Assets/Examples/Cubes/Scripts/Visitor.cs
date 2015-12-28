@@ -32,7 +32,7 @@ public class Visitor : MonoBehaviour {
 
 		sight.anchor = regularCenterOfView;
 		
-		if (isInVRMode) {
+		if (UnityEngine.VR.VRSettings.enabled) {
 			regularCameraRig.GetComponent<MouseCameraControl>().enabled = false;
 		}
 	}
@@ -71,16 +71,6 @@ public class Visitor : MonoBehaviour {
 			sight.target.SendMessage("OnClick", sight.hitInfo.point, SendMessageOptions.DontRequireReceiver);
 		}
 		*/
-	}
-
-	public static bool isInVRMode {
-		get {
-			#if UNITY_EDITOR
-			return false;
-			#endif
-			
-			return true;
-		}
 	}
 
 }
